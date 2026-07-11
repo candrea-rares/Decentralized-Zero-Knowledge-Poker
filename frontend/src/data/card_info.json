@@ -1,0 +1,314 @@
+[
+  {
+    "cardId": 0,
+    "rank": 1,
+    "suit": 0,
+    "label": "A of Spades"
+  },
+  {
+    "cardId": 1,
+    "rank": 2,
+    "suit": 0,
+    "label": "2 of Spades"
+  },
+  {
+    "cardId": 2,
+    "rank": 3,
+    "suit": 0,
+    "label": "3 of Spades"
+  },
+  {
+    "cardId": 3,
+    "rank": 4,
+    "suit": 0,
+    "label": "4 of Spades"
+  },
+  {
+    "cardId": 4,
+    "rank": 5,
+    "suit": 0,
+    "label": "5 of Spades"
+  },
+  {
+    "cardId": 5,
+    "rank": 6,
+    "suit": 0,
+    "label": "6 of Spades"
+  },
+  {
+    "cardId": 6,
+    "rank": 7,
+    "suit": 0,
+    "label": "7 of Spades"
+  },
+  {
+    "cardId": 7,
+    "rank": 8,
+    "suit": 0,
+    "label": "8 of Spades"
+  },
+  {
+    "cardId": 8,
+    "rank": 9,
+    "suit": 0,
+    "label": "9 of Spades"
+  },
+  {
+    "cardId": 9,
+    "rank": 10,
+    "suit": 0,
+    "label": "10 of Spades"
+  },
+  {
+    "cardId": 10,
+    "rank": 11,
+    "suit": 0,
+    "label": "J of Spades"
+  },
+  {
+    "cardId": 11,
+    "rank": 12,
+    "suit": 0,
+    "label": "Q of Spades"
+  },
+  {
+    "cardId": 12,
+    "rank": 13,
+    "suit": 0,
+    "label": "K of Spades"
+  },
+  {
+    "cardId": 13,
+    "rank": 1,
+    "suit": 1,
+    "label": "A of Hearts"
+  },
+  {
+    "cardId": 14,
+    "rank": 2,
+    "suit": 1,
+    "label": "2 of Hearts"
+  },
+  {
+    "cardId": 15,
+    "rank": 3,
+    "suit": 1,
+    "label": "3 of Hearts"
+  },
+  {
+    "cardId": 16,
+    "rank": 4,
+    "suit": 1,
+    "label": "4 of Hearts"
+  },
+  {
+    "cardId": 17,
+    "rank": 5,
+    "suit": 1,
+    "label": "5 of Hearts"
+  },
+  {
+    "cardId": 18,
+    "rank": 6,
+    "suit": 1,
+    "label": "6 of Hearts"
+  },
+  {
+    "cardId": 19,
+    "rank": 7,
+    "suit": 1,
+    "label": "7 of Hearts"
+  },
+  {
+    "cardId": 20,
+    "rank": 8,
+    "suit": 1,
+    "label": "8 of Hearts"
+  },
+  {
+    "cardId": 21,
+    "rank": 9,
+    "suit": 1,
+    "label": "9 of Hearts"
+  },
+  {
+    "cardId": 22,
+    "rank": 10,
+    "suit": 1,
+    "label": "10 of Hearts"
+  },
+  {
+    "cardId": 23,
+    "rank": 11,
+    "suit": 1,
+    "label": "J of Hearts"
+  },
+  {
+    "cardId": 24,
+    "rank": 12,
+    "suit": 1,
+    "label": "Q of Hearts"
+  },
+  {
+    "cardId": 25,
+    "rank": 13,
+    "suit": 1,
+    "label": "K of Hearts"
+  },
+  {
+    "cardId": 26,
+    "rank": 1,
+    "suit": 2,
+    "label": "A of Diamonds"
+  },
+  {
+    "cardId": 27,
+    "rank": 2,
+    "suit": 2,
+    "label": "2 of Diamonds"
+  },
+  {
+    "cardId": 28,
+    "rank": 3,
+    "suit": 2,
+    "label": "3 of Diamonds"
+  },
+  {
+    "cardId": 29,
+    "rank": 4,
+    "suit": 2,
+    "label": "4 of Diamonds"
+  },
+  {
+    "cardId": 30,
+    "rank": 5,
+    "suit": 2,
+    "label": "5 of Diamonds"
+  },
+  {
+    "cardId": 31,
+    "rank": 6,
+    "suit": 2,
+    "label": "6 of Diamonds"
+  },
+  {
+    "cardId": 32,
+    "rank": 7,
+    "suit": 2,
+    "label": "7 of Diamonds"
+  },
+  {
+    "cardId": 33,
+    "rank": 8,
+    "suit": 2,
+    "label": "8 of Diamonds"
+  },
+  {
+    "cardId": 34,
+    "rank": 9,
+    "suit": 2,
+    "label": "9 of Diamonds"
+  },
+  {
+    "cardId": 35,
+    "rank": 10,
+    "suit": 2,
+    "label": "10 of Diamonds"
+  },
+  {
+    "cardId": 36,
+    "rank": 11,
+    "suit": 2,
+    "label": "J of Diamonds"
+  },
+  {
+    "cardId": 37,
+    "rank": 12,
+    "suit": 2,
+    "label": "Q of Diamonds"
+  },
+  {
+    "cardId": 38,
+    "rank": 13,
+    "suit": 2,
+    "label": "K of Diamonds"
+  },
+  {
+    "cardId": 39,
+    "rank": 1,
+    "suit": 3,
+    "label": "A of Clubs"
+  },
+  {
+    "cardId": 40,
+    "rank": 2,
+    "suit": 3,
+    "label": "2 of Clubs"
+  },
+  {
+    "cardId": 41,
+    "rank": 3,
+    "suit": 3,
+    "label": "3 of Clubs"
+  },
+  {
+    "cardId": 42,
+    "rank": 4,
+    "suit": 3,
+    "label": "4 of Clubs"
+  },
+  {
+    "cardId": 43,
+    "rank": 5,
+    "suit": 3,
+    "label": "5 of Clubs"
+  },
+  {
+    "cardId": 44,
+    "rank": 6,
+    "suit": 3,
+    "label": "6 of Clubs"
+  },
+  {
+    "cardId": 45,
+    "rank": 7,
+    "suit": 3,
+    "label": "7 of Clubs"
+  },
+  {
+    "cardId": 46,
+    "rank": 8,
+    "suit": 3,
+    "label": "8 of Clubs"
+  },
+  {
+    "cardId": 47,
+    "rank": 9,
+    "suit": 3,
+    "label": "9 of Clubs"
+  },
+  {
+    "cardId": 48,
+    "rank": 10,
+    "suit": 3,
+    "label": "10 of Clubs"
+  },
+  {
+    "cardId": 49,
+    "rank": 11,
+    "suit": 3,
+    "label": "J of Clubs"
+  },
+  {
+    "cardId": 50,
+    "rank": 12,
+    "suit": 3,
+    "label": "Q of Clubs"
+  },
+  {
+    "cardId": 51,
+    "rank": 13,
+    "suit": 3,
+    "label": "K of Clubs"
+  }
+]

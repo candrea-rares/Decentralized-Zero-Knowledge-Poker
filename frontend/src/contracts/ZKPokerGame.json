@@ -1,0 +1,2314 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "bet",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "maxPlayers_",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint8",
+				"name": "deckSize_",
+				"type": "uint8"
+			},
+			{
+				"internalType": "address",
+				"name": "gameToken_",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bigBlindAmount_",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint16",
+				"name": "rakeBps_",
+				"type": "uint16"
+			},
+			{
+				"internalType": "address",
+				"name": "poseidon2_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "poseidon4_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "publicKeyVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "initialDeckVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "shuffleVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "finalShuffleDealVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "partialDecryptVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "revealVerifier_",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32[]",
+				"name": "cardPointHashes",
+				"type": "bytes32[]"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AggregateKeyNotSubmitted",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "AlreadyJoined",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "AlreadyShuffled",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "AlreadySubmittedPartialDecrypt",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "BettingRoundNotOpen",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CannotCheck",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CannotRotateKeyWhileSeated",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CardAlreadyReadyForReveal",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CardAlreadyRevealed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CardNotReadyForReveal",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "DeadlineExpired",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "DealtCardIndexOutOfBounds",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "GameFull",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "HandAlreadySubmitted",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InitialDeckAlreadySubmitted",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InitialDeckNotSubmitted",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InitialDeckProofVerificationFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InitialDeckPublicSignalsMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidBetAmount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidBuyIn",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "expected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "got",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidCardPointHashesLength",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidCiphertext",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidDeckCommit",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "expected",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "got",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidDeckLength",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidDeckSize",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidPlayerCount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidPoint",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidRevealPoint",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidSubmittedHand",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NoBetToCall",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NoTimeoutWinner",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotActionPlayer",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotCardOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotInRevealWindow",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotJoined",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "NotOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "OwnerCannotPartialDecrypt",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PartialDecryptProofVerificationFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PartialDecryptPublicSignalsMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PublicKeyAlreadySubmitted",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PublicKeyNotRegistered",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "PublicKeyProofVerificationFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ReentrancyGuardReentrantCall",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "RevealProofVerificationFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "RevealPublicSignalsMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "SafeERC20FailedOperation",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ShuffleProofVerificationFailed",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ShufflePublicSignalsMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "TimeoutNotReached",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum GameTypes.Phase",
+				"name": "expected",
+				"type": "uint8"
+			},
+			{
+				"internalType": "enum GameTypes.Phase",
+				"name": "actual",
+				"type": "uint8"
+			}
+		],
+		"name": "WrongPhase",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "expectedIndex",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "actualIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "WrongPlayerOrder",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ZeroAddress",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "y",
+				"type": "uint256"
+			}
+		],
+		"name": "AggregatePublicKeySubmitted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "score",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8[5]",
+				"name": "cardIndexes",
+				"type": "uint8[5]"
+			}
+		],
+		"name": "BestHandSubmitted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "street",
+				"type": "uint8"
+			}
+		],
+		"name": "BettingRoundClosed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "street",
+				"type": "uint8"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "actionPlayer",
+				"type": "address"
+			}
+		],
+		"name": "BettingRoundStarted",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "callBet",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "CardReadyForReveal",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "cardId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "rank",
+				"type": "uint8"
+			}
+		],
+		"name": "CardRevealed",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "check",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimTimeoutVictory",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newDeadline",
+				"type": "uint256"
+			}
+		],
+		"name": "DeadlineExtended",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "roundId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "step",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "deckCommit",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c1",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c2",
+						"type": "tuple"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct GameTypes.Ciphertext[]",
+				"name": "deck",
+				"type": "tuple[]"
+			}
+		],
+		"name": "DeckPublished",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "depositToTable",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "fold",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "GameRefunded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "roundId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "isTie",
+				"type": "bool"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "winningHandCategory",
+				"type": "uint8"
+			}
+		],
+		"name": "HandResult",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "submittedBy",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "deckLength",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "deckCommit",
+				"type": "uint256"
+			}
+		],
+		"name": "InitialDeckSubmitted",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "joinGame",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "leaveGame",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "partialCount",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "cardsReadyForRevealCount",
+				"type": "uint256"
+			}
+		],
+		"name": "PartialDecryptSubmitted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "enum GameTypes.Phase",
+				"name": "newPhase",
+				"type": "uint8"
+			}
+		],
+		"name": "PhaseAdvanced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "street",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "PlayerBet",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "street",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "PlayerCalled",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "street",
+				"type": "uint8"
+			}
+		],
+		"name": "PlayerChecked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "loser",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "pot",
+				"type": "uint256"
+			}
+		],
+		"name": "PlayerFolded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "loser",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			}
+		],
+		"name": "PlayerForfeited",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "playerIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "PlayerJoined",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "PlayerLeft",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "y",
+				"type": "uint256"
+			}
+		],
+		"name": "PublicKeyRotated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "y",
+				"type": "uint256"
+			}
+		],
+		"name": "PublicKeySubmitted",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[8]",
+				"name": "publicSignals",
+				"type": "uint256[8]"
+			}
+		],
+		"name": "revealCard",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[2]",
+				"name": "publicSignals",
+				"type": "uint256[2]"
+			}
+		],
+		"name": "rotatePublicKey",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "roundId",
+				"type": "uint256"
+			}
+		],
+		"name": "RoundStarted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "playerIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "shuffleNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newDeckCommit",
+				"type": "uint256"
+			}
+		],
+		"name": "ShuffleSubmitted",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8[5]",
+				"name": "cardIndexes",
+				"type": "uint8[5]"
+			}
+		],
+		"name": "submitBestHand",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[40]",
+				"name": "publicSignals",
+				"type": "uint256[40]"
+			}
+		],
+		"name": "submitFinalShuffleAndDeal",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c1",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c2",
+						"type": "tuple"
+					}
+				],
+				"internalType": "struct GameTypes.Ciphertext[]",
+				"name": "encryptedDeck",
+				"type": "tuple[]"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[3]",
+				"name": "publicSignals",
+				"type": "uint256[3]"
+			}
+		],
+		"name": "submitInitialDeck",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[8]",
+				"name": "publicSignals",
+				"type": "uint256[8]"
+			}
+		],
+		"name": "submitPartialDecrypt",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[2]",
+				"name": "publicSignals",
+				"type": "uint256[2]"
+			}
+		],
+		"name": "submitPublicKey",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c1",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct GameTypes.Point",
+						"name": "c2",
+						"type": "tuple"
+					}
+				],
+				"internalType": "struct GameTypes.Ciphertext[]",
+				"name": "shuffledDeck",
+				"type": "tuple[]"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256[2]",
+						"name": "a",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2][2]",
+						"name": "b",
+						"type": "uint256[2][2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "c",
+						"type": "uint256[2]"
+					}
+				],
+				"internalType": "struct GameTypes.Groth16Proof",
+				"name": "proof",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256[4]",
+				"name": "publicSignals",
+				"type": "uint256[4]"
+			}
+		],
+		"name": "submitShuffle",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			}
+		],
+		"name": "TimeoutVictory",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "withdrawRake",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawTableBalance",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawWinnings",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "actedThisStreet",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ACTION_TIMEOUT",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "actionDeadline",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "actionPlayer",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "aggregatePk",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "y",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "aggregatePkSubmitted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bestHandSubmitCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bettingRoundOpen",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bettingStreet",
+		"outputs": [
+			{
+				"internalType": "enum ZKPokerGameV6.BettingStreet",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bigBlindAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "cardsReadyForRevealCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "claimableWinnings",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "committedThisStreet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "COMMUNITY_CARD_START_INDEX",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentBet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentDeckCommit",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "dealtCardCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "deckSize",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "finalShuffleDealVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IShufflePokerDealVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "gameToken",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cardIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "getDealtCard",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "owner_",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "c1x",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "c1y",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "c2x",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "c2y",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentX",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentY",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "partialCount",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bool",
+				"name": "revealReady",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "revealed",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint8",
+				"name": "revealedCardId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint8",
+				"name": "revealedRank",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getPlayer",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPlayerCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "getPublicKey",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "x",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "y",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "handPot",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasShuffled",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasSubmittedBestHand",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasSubmittedKey",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasSubmittedPartialDecrypt",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initialDeckSubmitted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initialDeckVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IEncryptDeckCommitVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isTie",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "maxPlayers",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "minBet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "partialDecryptVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IPartialDecryptVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "phase",
+		"outputs": [
+			{
+				"internalType": "enum GameTypes.Phase",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "playerIndexPlusOne",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "pointHashToCardIdPlusOne",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "POKER_DEALT_CARD_COUNT",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "poseidon2",
+		"outputs": [
+			{
+				"internalType": "contract IPoseidon2",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "poseidon4",
+		"outputs": [
+			{
+				"internalType": "contract IPoseidon4",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PRIVATE_CARD_COUNT",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "publicKeyCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "publicKeyVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IPublicKeyVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rakeAccrued",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rakeBps",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "revealCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "revealVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IRevealVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "roundId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "shuffleCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "shuffleVerifier",
+		"outputs": [
+			{
+				"internalType": "contract IShuffleCommitVerifier",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "submittedBestHandIndexes",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "submittedBestHandScore",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "tableBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "winner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "winningHandCategory",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
